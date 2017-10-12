@@ -48,14 +48,7 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
 //Write a function named evenFinder that is given nums as it's only argument and removes all values that aren't even from the given array.
 
   //Code Here
-  function evenFinder(nums){
-    for(var i=0;i<nums.length;i++){
-      if(nums[i]%2!==0){
-        nums.slice(i,1);
-      }
-    }
-    return nums;
-  }
+  const evenFinder=(nums)=>nums.filter(val=>val%2===0);
 
 
 
@@ -111,7 +104,15 @@ var getRandomArbitrary = function() {
 // Your job is to write a function named finder that will get a random number (by invoking getRandomArbitrary), then loop through the array (that will be passed in as a parameter) to see if that random number is in the array. If it is, return true, if it's not, return false
 
   //Code Here
-
+  function finder(arr){
+    var num= getRandomArbitrary();
+      for(var i=0;i<arr.length;i++){
+        if(arr[i]===num){
+          return true;
+        }
+      }
+      return false;
+  }
 
 
 
@@ -135,16 +136,20 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
   //Code Here
-  const removeItem=(myGroceryList,item)=>{
-    if(myGroceryList.indexOf(item)!==-1){
-      myGroceryList.slice(i,1);
+  function removeItem(myGroceryList,item){
+    for(var i=0;i<myGroceryList.length;i++){
+      if(myGroceryList[i]===item){
+        myGroceryList.splice(i,1);
+      }
     }
+    return myGroceryList;
   }
 
   const addItem=(myGroceryList,item)=>{
     if(myGroceryList.indexOf(item)===-1){
       myGroceryList.push(item);
     }
+    return myGroceryList;
   }
 //removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
@@ -163,6 +168,7 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
     for(let i=1;i<=215;i++){
       answer.push(i);
     }
+    return answer;
   }
 
 
@@ -175,11 +181,11 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 
   //Code Here
   const addTen=(numbers)=>{
+    var answer=[];
     for(var i=0;i<numbers.length;i++){
-      Numbers(numbers[i]);
-      numbers[i]+=10;
+      answer.push(parseInt(numbers[i])+10);
     }
-    return numbers;
+    return answer;
   }
 
 
@@ -202,12 +208,16 @@ for(var i = 0; i < num2; i++){
 
   //Code Here
   function longer(arr1,arr2){
+    var long=[]
     if(arr1.length>arr2.length){
-      return arr1;
+      long=arr1;
     }else if(arr1.length<arr2.length){
-      return arr2;
+      long=arr2;
     }
+    return long;
   }
+
+  longer(arr1,arr2);
 
 
 /*
@@ -224,12 +234,9 @@ Example: var arr1 = [1,2,3,4]; var arr2 = [2,4,5,6]; newArray // [2,4]
   const both=(arr1,arr2)=>{
     var answer=[];
     for(var i=0;i<arr1.length;i++){
-      let j=0;
-      if(arr1[i]===arr2[j]){
-        answer.push(arr1[i]);
-        j++;
-      }
+      arr2.forEach((x)=>{x===arr1[i]?answer.push(arr1[i]):x})
     }
+    return answer;
   }
 
 
@@ -279,7 +286,11 @@ sure that it's equal to 4. */
 Loop through your devMountainEmployees until you find cahlan, then remove him from the array.*/
 
   //Code Here
-
+  for(let i=0;i<devMountainEmployees.length;i++){
+    if(devMountainEmployees[i].name==="Cahlan"){
+      devMountainEmployees.splice(i,1);
+    }
+  }
 
 
 
@@ -319,7 +330,7 @@ var user3={
   username:"javascriptuser"
 };
 
-//users.push(user1,user2,user3);
+users.push(user1,user2,user3);
 
 /*Now you have a very common data structure. Twitter is a good use case.
 It's easy to imagine that your followers list on Twitter is an Array full or objects
@@ -330,5 +341,9 @@ objects until you find Tyler's account (use tylermcginnis33@gmail.com to find hi
 Once you find the particular index he's located in, delete him from the array.*/
 
   //Code Here
-
+  for(var i=0;i<users.length;i++){
+    if(users[i].email==="tylermcginnis33@gmail.com"){
+      users.splice(i,1);
+    }
+  }
 //The activity we just did is very much how data works in 'the real world'.
